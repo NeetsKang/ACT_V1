@@ -526,7 +526,7 @@ const S1Normality = ({ onNext }) => {
           <div style={{ fontSize:54, marginBottom:26, animation:"pulse 3s ease-in-out infinite" }}>{s.emoji}</div>
           <h2 style={{ fontSize:22, fontWeight:700, color:S.text, fontFamily:"'Noto Serif KR', serif", textAlign:"center", marginBottom:20, lineHeight:1.4 }}>{s.title}</h2>
           <div style={{ background:s.hi?S.tealSoft:S.cream, border:`1px solid ${s.hi?S.teal+"38":S.border}`, borderRadius:18, padding:"22px 24px", width:"100%" }}>
-            <p style={{ fontSize:15, color:S.text, lineHeight:2.0, fontFamily:"'Gowun Dodum', sans-serif", whiteSpace:"pre-line", textAlign:"center" }}>{s.body}</p>
+            <p style={{ fontSize:15, color:S.text, lineHeight:2.0, fontFamily:"'Gowun Dodum', sans-serif", whiteSpace:"pre-line", textAlign:"left", wordBreak:"keep-all" }}>{s.body}</p>
           </div>
         </div>
         <div style={{ display:"flex", gap:10, marginTop:24 }}>
