@@ -530,9 +530,9 @@ const S1Normality = ({ onNext }) => {
           </div>
         </div>
         <div style={{ display:"flex", gap:10, marginTop:24 }}>
-          {idx>0 && <Btn variant="secondary" onClick={() => setIdx(i=>i-1)} full={false} style={{ flex:"0 0 76px", fontSize:13 }}>← 이전</Btn>}
+          {idx>0 && <Btn variant="secondary" onClick={() => setIdx(i=>i-1)} full={false} style={{ flex:"0 0 76px", fontSize:13 }}>이전</Btn>}
           <Btn variant={idx===slides.length-1?"peach":"primary"} onClick={() => idx<slides.length-1 ? setIdx(i=>i+1) : onNext()}>
-            {idx<slides.length-1 ? "다음 →" : "모래늪 체험 →"}
+            {idx<slides.length-1 ? "다음" : "모래늪 체험 →"}
           </Btn>
         </div>
       </div>
