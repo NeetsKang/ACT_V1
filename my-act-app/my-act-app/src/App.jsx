@@ -7,7 +7,8 @@ const GlobalStyles = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Serif+KR:wght@400;700&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html, body { background: #F5F0E8; }
+    html, body { background: #F5F0E8; overflow-x: hidden; }
+    #root, #root > div { max-width: 420px; margin: 0 auto; width: 100%; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -473,7 +474,7 @@ const SessProgress = ({ cur, total }) => (
 
 // ── S1-0: 인트로 ─────────────────────────────────────────────────
 const S1Intro = ({ onNext }) => (
-  <div style={{ minHeight:"100vh", background:S.earth, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"40px 28px", position:"relative", overflow:"hidden" }}>
+  <div style={{ minHeight:"100vh", width:"100%", background:S.earth, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"40px 28px", position:"relative", overflow:"hidden" }}>
     {[0,1,2].map(i => (
       <div key={i} style={{ position:"absolute", width:260+i*110, height:260+i*110, borderRadius:"50%", border:`1px solid rgba(196,168,130,${0.07-i*0.02})`, top:"50%", left:"50%", transform:"translate(-50%,-50%)" }}/>
     ))}
@@ -515,7 +516,7 @@ const S1Normality = ({ onNext }) => {
   ];
   const s = slides[idx];
   return (
-    <div style={{ minHeight:"100vh", background:S.bg, display:"flex", flexDirection:"column" }}>
+    <div style={{ minHeight:"100vh", width:"100%", background:S.bg, display:"flex", flexDirection:"column" }}>
       <SessProgress cur={1} total={5}/>
       <div style={{ flex:1, display:"flex", flexDirection:"column", padding:"24px 24px 28px" }}>
         <div style={{ display:"flex", justifyContent:"center", gap:6, marginBottom:28 }}>
@@ -575,7 +576,7 @@ const S1Quicksand = ({ onNext }) => {
   const faceEmoji = phase==="surrender" ? (showMsg?"😮‍💨":"😟") : (sinkLv>65?"😨":"😰");
 
   return (
-    <div style={{ minHeight:"100vh", background:S.bg, display:"flex", flexDirection:"column" }}>
+    <div style={{ minHeight:"100vh", width:"100%", background:S.bg, display:"flex", flexDirection:"column" }}>
       <SessProgress cur={2} total={5}/>
 
       {phase === "intro" && (
@@ -672,7 +673,7 @@ const S1Faucet = ({ onNext }) => {
   };
 
   return (
-    <div style={{ minHeight:"100vh", background:S.bg, display:"flex", flexDirection:"column" }}>
+    <div style={{ minHeight:"100vh", width:"100%", background:S.bg, display:"flex", flexDirection:"column" }}>
       <SessProgress cur={3} total={5}/>
       <div style={{ flex:1, padding:"24px 24px 28px", display:"flex", flexDirection:"column" }}>
         <div style={{ marginBottom:18 }}>
@@ -748,7 +749,7 @@ const S1Diary = ({ onNext }) => {
   const handleSave = () => { setSaved(true); setTimeout(onNext, 1700); };
 
   return (
-    <div style={{ minHeight:"100vh", background:S.bg, display:"flex", flexDirection:"column" }}>
+    <div style={{ minHeight:"100vh", width:"100%", background:S.bg, display:"flex", flexDirection:"column" }}>
       <SessProgress cur={4} total={5}/>
       <div style={{ flex:1, padding:"24px 24px 28px", overflowY:"auto" }}>
         <div style={{ marginBottom:20 }}>
@@ -821,7 +822,7 @@ const S1Beyond = ({ onComplete }) => {
   const allFilled = Object.values(answers).every(v => v.trim().length > 0);
 
   return (
-    <div style={{ minHeight:"100vh", background:S.bg, display:"flex", flexDirection:"column" }}>
+    <div style={{ minHeight:"100vh", width:"100%", background:S.bg, display:"flex", flexDirection:"column" }}>
       <SessProgress cur={5} total={5}/>
       <div style={{ flex:1, padding:"24px 24px 28px", display:"flex", flexDirection:"column" }}>
 
@@ -904,7 +905,7 @@ const Session1 = ({ onComplete }) => {
     <S1Diary      key="d" onNext={next}/>,
     <S1Beyond     key="b" onComplete={onComplete}/>,
   ];
-  return <div style={{ maxWidth:420, margin:"0 auto" }}>{steps[step]}</div>;
+  return <div style={{ maxWidth:420, margin:"0 auto", width:"100%", overflowX:"hidden" }}>{steps[step]}</div>;
 };
 
 // ════════════════════════════════════════════════════════════════
@@ -943,7 +944,7 @@ export default function App() {
   // 세션 화면이 열려 있으면 탭바 숨기고 세션 렌더
   if (activeSession === 1) {
     return (
-      <div style={{ maxWidth:420, margin:"0 auto", fontFamily:"'Gowun Dodum', sans-serif", background:S.bg, minHeight:"100vh" }}>
+      <div style={{ maxWidth:420, margin:"0 auto", width:"100%", fontFamily:"'Gowun Dodum', sans-serif", background:S.bg, minHeight:"100vh", overflowX:"hidden" }}>
         <GlobalStyles/>
         <Session1 onComplete={() => handleSessionComplete(1)}/>
       </div>
